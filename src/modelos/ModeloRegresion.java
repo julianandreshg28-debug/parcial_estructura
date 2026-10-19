@@ -14,11 +14,19 @@ public class ModeloRegresion extends Modelo {
         this.grado = grado;
     }
 
+
     @Override
     public double entrenar(Dataset dataset) {
-        // TODO: implementar
-        return 0;
+        int loss = grado * 20;
+
+        while (getEpocaActual() < getLossPorEpoca().length) {
+            registrarEpoca(loss);
+            loss = Math.max(0, loss - 4);
+        }
+
+        return mejorLoss();
     }
+
 
     public int getGrado() { return grado; }
 }
