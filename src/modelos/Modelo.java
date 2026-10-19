@@ -58,10 +58,11 @@ public abstract class Modelo {
      * Usa MetricaEvaluacion como DEPENDENCIA puntual.
      * No se guarda como atributo.
      */
+
     public double calcularMetrica(MetricaEvaluacion metrica) {
-        // TODO: implementar
-        return 0;
+        return metrica.calcular(this, "accuracy");
     }
+
 
     // Getters encapsulados
     public String getNombre() { return nombre; }

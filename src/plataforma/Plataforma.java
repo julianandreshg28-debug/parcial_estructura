@@ -18,16 +18,27 @@ public class Plataforma {
 
     /** Agrega un experimento ya existente (agregación). */
     public void agregarExperimento(Experimento experimento) {
-        // TODO: implementar
+        experimentos.add(experimento);
+
     }
 
     /**
      * Reporte: una línea por experimento con su id y el mejor loss de su modelo.
      */
+
     public List<String> reporteMejorLoss() {
-        // TODO: implementar
-        return new ArrayList<>();
+        List<String> reporte = new ArrayList<>();
+
+        for (Experimento experimento : experimentos) {
+            if (experimento.getModelo() != null) {
+                reporte.add(experimento.getId() + ": " +
+                        experimento.getModelo().mejorLoss());
+            }
+        }
+
+        return reporte;
     }
+
 
     public String getNombre() { return nombre; }
     public ArrayList<Experimento> getExperimentos() { return experimentos; }
