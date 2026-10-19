@@ -32,17 +32,27 @@ public abstract class Modelo {
      * actualiza el mejor loss pero no agrega más elementos.
      */
     public void registrarEpoca(int loss) {
-        // TODO: implementar
+
+        if (loss < mejorLossRegistrado) {
+            mejorLossRegistrado = loss;
+        }
+
+        if (epocaActual < lossPorEpoca.length) {
+            lossPorEpoca[epocaActual] = loss;
+            epocaActual++;
+        }
+
     }
 
     /**
      * Retorna el mejor (menor) loss registrado.
      * Si no hay épocas, retorna Integer.MAX_VALUE.
      */
+
     public int mejorLoss() {
-        // TODO: implementar
-        return Integer.MAX_VALUE;
+        return mejorLossRegistrado;
     }
+
 
     /**
      * Usa MetricaEvaluacion como DEPENDENCIA puntual.
